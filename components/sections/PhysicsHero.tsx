@@ -4,12 +4,12 @@ import Badge from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Text } from '@/components/ui/Text';
 import { cn } from '@/lib/utils';
-import { ArrowDown, ArrowRight, RotateCcw, UserRound } from 'lucide-react';
+import { ArrowDown, ArrowRight, RotateCcw } from 'lucide-react';
 import Matter from 'matter-js';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
-import  photoSrc from '@/assets/preview.webp';
+import photoSrc from '@/assets/preview.webp';
 
 const { Engine, Runner, Bodies, Body, Composite, Constraint, Events } = Matter;
 
@@ -17,7 +17,7 @@ type Tag = { label: string; accent?: boolean };
 
 type PhysicsHeroProps = {
 	tags?: Tag[];
-	 
+
 	/** куда ведёт «Листать вниз» */
 	nextHref?: string;
 };
@@ -75,7 +75,7 @@ const objectClass =
 
 export default function PhysicsHero({
 	tags = DEFAULT_TAGS,
- 
+
 	nextHref = '#about',
 }: PhysicsHeroProps) {
 	const sectionRef = useRef<HTMLElement>(null);
@@ -326,16 +326,14 @@ export default function PhysicsHero({
 						objectClass,
 						'aspect-[3/4] w-[clamp(120px,14vw,210px)] overflow-hidden bg-linear-to-b from-night-soft/20 to-night-raised grayscale',
 					)}>
-				
-						<Image
-							src={photoSrc}
-							alt=''
-							fill
-							sizes='(min-width: 1500px) 210px, 14vw'
-							draggable={false}
-							className='pointer-events-none object-cover'
-						/>
-				
+					<Image
+						src={photoSrc}
+						alt=''
+						fill
+						sizes='(min-width: 1500px) 210px, 14vw'
+						draggable={false}
+						className='pointer-events-none object-cover'
+					/>
 				</span>
 
 				{tags.map(({ label, accent }) => (

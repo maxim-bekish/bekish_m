@@ -1,10 +1,9 @@
+import { Text } from '@/components/ui/Text';
 import BurgerMenu from './BurgerMenu';
 import DesignPopover from './DesignPopover';
-import { Text } from '../ui/Text';
 
 // общий ряд шапки: слои лежат друг на друге и выравниваются одинаково
-const row =
-	'pointer-events-none fixed inset-x-0 top-[env(safe-area-inset-top,0px)] z-40';
+const row = 'pointer-events-none fixed inset-x-0 top-[env(safe-area-inset-top,0px)] z-40';
 const inner = 'wrapper-xl flex min-h-17 items-center';
 
 // три слоя вместо одного, потому что mix-blend-difference ломает кнопку «Дизайн»:
@@ -15,7 +14,12 @@ export default function Header() {
 		<header>
 			<div className={`${row} text-night-ink mix-blend-difference`}>
 				<div className={inner}>
-					<Text href='/' aria-label='logo' as='a' variant='title' className='pointer-events-auto'>
+					<Text
+						href='/'
+						aria-label='logo'
+						as='a'
+						variant='title'
+						className='pointer-events-auto'>
 						Максим
 					</Text>
 				</div>
