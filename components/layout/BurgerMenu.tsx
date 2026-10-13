@@ -1,17 +1,11 @@
 'use client';
-
+import { nav } from '@/domain/nav';
 import { Dialog } from '@base-ui/react/dialog';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { Text } from '../ui/Text';
+import { Text } from '@/components/ui/Text';
 
-// TODO: заменить на реальные разделы
-const links = [
-	{ href: '/#cases', label: 'Кейсы' },
-	{ href: '/#skills', label: 'Что умею' },
-	{ href: '/#about', label: 'Обо мне' },
-	{ href: '/#contacts', label: 'Контакты' },
-];
+ 
 
 // выезд текста; Base UI ждёт конца перехода у Popup, поэтому у фона та же длительность.
 // Закрытие — зеркало открытия: ease-in вместо ease-out, иначе уход выглядит рывком
@@ -70,7 +64,7 @@ export default function BurgerMenu() {
 					<Dialog.Close className='sr-only'>Закрыть меню</Dialog.Close>
 
 					<nav className='wrapper-xl flex w-full flex-1 flex-col justify-center gap-2'>
-						{links.map((l) => (
+						{nav.map((l) => (
 							<Text
 								key={l.href}
 								as={Link}
@@ -83,7 +77,6 @@ export default function BurgerMenu() {
 							</Text>
 						))}
 					</nav>
-					
 				</Dialog.Popup>
 			</Dialog.Portal>
 		</Dialog.Root>
