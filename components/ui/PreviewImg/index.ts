@@ -1,0 +1,1 @@
+export { PreviewImg } from './PreviewImg';

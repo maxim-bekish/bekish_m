@@ -1,11 +1,10 @@
-import { Text } from '../ui/Text';
-import Image from 'next/image';
-import project1 from '@/assets/works/img.webp';
-import { ArrowUpRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
 import { works } from '@/lib/works';
+import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
 import Badge from '../ui/Badge';
+import { Text } from '@/components/ui/Text';
+import { PreviewImg } from '../ui/PreviewImg';
 
 export default function Works() {
 	return (
@@ -28,13 +27,11 @@ export default function Works() {
 								'group relative flex flex-col gap-4',
 								i === 0 && 'md:col-span-2',
 							)}>
-							<div className='aspect-4/3 overflow-hidden bg-night-raised text-night-ink md:aspect-21/9'>
-								<Image
-									src={project1}
-									alt=''
-									className='inset-0 size-full object-cover object-[50%_30%] transition-transform duration-800 group-hover:scale-104'
-								/>
-							</div>
+							<PreviewImg
+								src={el.preview.src}
+								alt={el.preview.description}
+								sizes={i === 0 ? '70vw' : '(min-width: 861px) 50vw, 100vw'}
+							/>
 							<div className='flex flex-col gap-2'>
 								<div className='flex justify-between'>
 									<Text variant='title' className='whitespace-nowrap'>
