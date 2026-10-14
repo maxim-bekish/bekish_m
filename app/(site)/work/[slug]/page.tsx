@@ -79,7 +79,7 @@ export default async function Work({ params }: PageProps<'/work/[slug]'>) {
 					</Text>
 				</div>
 				<div>
-					<div className='relative overflow-hidden rounded-t-[12px] border  border-night-line bg-night-raised shadow-browser    h-[95svh]'>
+					<div className='relative overflow-hidden rounded-t-[12px] border  border-night-line bg-night-raised shadow-browser max-h-[60svh]'>
 						<div
 							className='flex h-10 items-center gap-2 border-b border-night-ink/15 px-4'
 							aria-hidden='true'>

@@ -6,7 +6,7 @@ import { Download } from 'lucide-react';
 
 const lineTextTwo = [
 	{ value: 3, text: 'года в разработке' },
-	{ value: 12, text: 'проектов в резюме' },
+	{ value: 11, text: 'проектов в резюме' },
 	{ value: 10, text: 'технологий' },
 ];
 
@@ -53,12 +53,17 @@ export default function About() {
 						<em className='underline decoration-accent decoration-3 underline-offset-[.16em]'>
 							от макета в Figma до продакшена
 						</em>
-						. На MentorAI был единственным фронтендом: сам спроектировал дизайн и сам
-						собрал его на Nuxt. До этого писал на React и Next.js — в Neatsoft и на
-						фрилансе.
+						, а если нет дизайнера, проектирую его сам. На MentorAI был единственным
+						фронтендом и собрал его на Nuxt. На React делал сервис аренды скинов,
+						админ-панель и сайт фотографа со своим REST API.
 					</Text>
 
-					<Button icon={<Download />}>Резюме PDF</Button>
+					<Button
+						icon={<Download />}
+						render={<a href='/maksim-bekish-cv.pdf' download />}
+						nativeButton={false}>
+						Резюме PDF
+					</Button>
 				</div>
 			</Reveal>
 		</section>

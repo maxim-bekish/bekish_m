@@ -21,7 +21,7 @@ export default function Hero() {
 							Открыт к работе
 						</Badge>
 						<Badge size='md' variant='default'>
-							Vue 3 · Nuxt · TypeScript
+							Vue · React · TypeScript
 						</Badge>
 						<Badge size='md' variant='default'>
 							Минск / удалённо
@@ -31,7 +31,7 @@ export default function Hero() {
 				<div className=' flex-col gap-4 hidden max-w-[340px] text-right tab:flex'>
 					<Text color='night-ink' variant='caps'>
 						Привет, я Максим Бекиш — фронтенд-разработчик из Минска. Собираю интерфейсы
-						на Vue, Nuxt и TypeScript от макета до продакшена.
+						на Vue, React и TypeScript от макета до продакшена.
 					</Text>
 
 					<Button

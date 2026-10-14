@@ -27,18 +27,22 @@ export default function Footer() {
 					})}
 				</ul>
 				<div className='flex gap-4 mt-6 items-end'>
-					<Text as='p' variant='caps' color='night-muted'>
-						© 2026
-					</Text>
-					<Text as='p' variant='caps' color='night-muted'>
-						ui kit
-					</Text>
-					<div className='flex-1 flex justify-center'>
+					<div className='flex flex-col items-end gap-1 md:contents'>
+						<Text as='p' variant='caps' color='night-muted'>
+							© 2026
+						</Text>
+						<Text as='p' variant='caps' color='night-muted'>
+							ui kit
+						</Text>
+						<div className='md:order-1'>
+							<NowTime />
+						</div>
+					</div>
+					<div className='flex-1 flex justify-start -order-1 md:order-0 md:justify-center'>
 						<Link href='/'>
 							<Logo title='Максим Бекиш' />
 						</Link>
 					</div>
-					<NowTime />
 				</div>
 			</Reveal>
 
