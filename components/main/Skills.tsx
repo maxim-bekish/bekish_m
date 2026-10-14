@@ -6,6 +6,7 @@ import { Paperclip } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Text } from '@/components/ui/Text';
+import { Reveal } from '../ui/Reveal';
 
 interface Skill {
 	id: string;
@@ -22,59 +23,66 @@ interface Extra {
 }
 
 const skills: Skill[] = [
-	{
+		{
 		id: 'vue',
 		label: 'Vue 3 и Nuxt',
 		big: 'Vue',
 		title: 'Vue 3 и Nuxt',
-		text: 'Основной стек: Vue 3, Nuxt и TypeScript. На MentorAI собрал весь интерфейс — от первого компонента до продакшена.',
+		text: 'Один из двух основных стеков: Vue 3, Nuxt и TypeScript. Собираю интерфейс с нуля до продакшена: архитектура, компоненты, состояние на Pinia и Vuex, работа с API.',
 	},
 	{
 		id: 'react',
 		label: 'React и Next.js',
 		big: 'React',
 		title: 'React и Next.js',
-		text: 'Писал на React и Next.js в Neatsoft и на фрилансе. Для данных — React Query.',
+		text: 'Второй основной стек: React, Next.js и TypeScript. SSR и SSG, роутинг, состояние на Redux Toolkit и Zustand, данные через TanStack Query.',
 	},
 	{
 		id: 'motion',
 		label: 'Анимации и графика',
 		big: 'GSAP',
 		title: 'GSAP и PixiJS',
-		text: 'Анимации на GSAP и графика на PixiJS: интерактивный годовой отчёт Сибура, сайт фотографа, кампус РАНХиГС.',
+		text: 'Делаю живые интерфейсы: анимации на скролле и сложные таймлайны на GSAP, интерактивная 2D-графика и карты на PixiJS.',
 	},
 	{
 		id: 'perf',
 		label: 'Производительность',
 		big: '60fps',
 		title: 'Скорость',
-		text: 'Ленивая загрузка, разбиение бандла, аккуратная работа с данными. Думаю о производительности с первого коммита, а не перед релизом.',
+		text: 'Ленивая загрузка, разбиение бандла, оптимизация изображений и аккуратная работа с данными. Думаю о производительности с первого коммита, а не перед релизом.',
 	},
 	{
 		id: 'layout',
 		label: 'Вёрстка',
 		big: '</>',
 		title: 'Вёрстка',
-		text: 'Адаптивная вёрстка под 1С-Битрикс и Astro: Лизинг A5, Зелектроник, Собери забор.',
+		text: 'Адаптивная и кроссбраузерная вёрстка по БЭМ: от лендингов до интернет-магазинов, в том числе под интеграцию в 1С-Битрикс.',
 	},
 	{
 		id: 'figma',
 		label: 'Дизайн в Figma',
 		big: 'Figma',
 		title: 'Дизайн в Figma',
-		text: 'Могу сам спроектировать интерфейс, если дизайнера нет, — и потом без потерь перенести его в код.',
+		text: 'Могу сам спроектировать интерфейс, если дизайнера нет, а потом без потерь перенести его в код.',
+	},
+	{
+		id: 'testing',
+		label: 'Тестирование',
+		big: 'Tests',
+		title: 'Тестирование',
+		text: 'Пишу unit- и компонентные тесты на Vitest и Testing Library: проверяю рендер, пропсы и варианты компонентов, чтобы изменения не ломали то, что уже работает.',
 	},
 ];
 
 const extras: Extra[] = [
 	{ title: 'ИИ в работе', text: 'Cursor и Claude забирают рутину, решения остаются за мной.' },
-	{ title: 'React Query', text: 'Кэш, загрузки и ошибки — без самописных велосипедов.' },
-	{ title: 'Astro', text: 'Быстрые лендинги без лишнего JS: Собери забор, отчёт Сибура.' },
-	{
-		title: 'Игры',
-		text: 'Пара мини-игр на canvas. Поиграйте, пока ждёте деплой.',
 
-		href: '/games',
+	{ title: 'Astro', text: 'Быстрые лендинги и контентные сайты без лишнего JS.' },
+		{ title: 'Стейт-менеджеры', text: 'Pinia, Vuex, Redux Toolkit, Zustand: выбираю под задачу, а не по привычке.' },
+	{
+		title: 'Лаборатория',
+		text: 'Эксперименты с интерфейсами: лучше один раз увидеть',
+		href: '/laboratory',
 	},
 ];
 
@@ -85,15 +93,15 @@ export default function Skills() {
 
 	return (
 		<section id='skills' className='bg-night-bg py-(--section-y) text-night-ink'>
-			<div className='wrapper-xl'>
+			<Reveal className='wrapper-xl'>
 				<Text variant='section' color='accent'>
 					Что умею
 				</Text>
 				<Text variant='lead' color='night-soft' className='mt-2.5'>
 					Наведите на пункт — карточка расскажет подробнее
 				</Text>
-			</div>
-			<div className='mt-[clamp(40px,5vw,72px)] grid grid-cols-1 items-center gap-12 md:grid-cols-2 wrapper-xl'>
+			</Reveal>
+			<Reveal className='mt-[clamp(40px,5vw,72px)] grid grid-cols-1 items-center gap-12 md:grid-cols-2 wrapper-xl'>
 				{/* список навыков */}
 				<ul className='border-t border-night-line '>
 					{skills.map((skill) => {
@@ -156,10 +164,10 @@ export default function Skills() {
 						</div>
 					</div>
 				</div>
-			</div>
+			</Reveal>
 
 			{/* «Это ещё не всё!» */}
-			<div className='mt-[clamp(72px,9vw,120px)] wrapper-xl'>
+			<Reveal className='mt-[clamp(72px,9vw,120px)] wrapper-xl'>
 				<Text as='h3' variant='title' color='night-ink' className='mb-7'>
 					Это ещё не всё!
 				</Text>
@@ -173,13 +181,6 @@ export default function Skills() {
 									color='night-ink'
 									className={cn('mb-2 flex items-center gap-2')}>
 									{item.title}
-									{item.href && (
-										<Text
-											variant='caps'
-											className='border border-accent/60 bg-accent/10 rounded-full p-0.5 px-2'>
-											Скоро
-										</Text>
-									)}
 								</Text>
 								<Text
 									variant='body-sm'
@@ -206,8 +207,14 @@ export default function Skills() {
 										<Paperclip
 											strokeWidth={2}
 											size={20}
-											className='absolute top-4 right-4 text-accent group-hover:text-on-accent'
+											className='absolute top-2 right-3 text-accent group-hover:text-on-accent'
 										/>
+
+										<Text
+											variant='caps'
+											className='border w-fit absolute bottom-2 right-2 border-accent/60 bg-accent/10 rounded-full p-0.5 px-2'>
+											Скоро
+										</Text>
 									</Link>
 								) : (
 									<div className={cell}>{content}</div>
@@ -216,7 +223,7 @@ export default function Skills() {
 						);
 					})}
 				</ul>
-			</div>
+			</Reveal>
 		</section>
 	);
 }
