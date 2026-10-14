@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Unbounded, Onest } from 'next/font/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import Scrollbar from '@/components/ui/Scrollbar';
 import AccentInitScript from '@/components/ui/AccentInitScript';
 import YandexMetrika from '@/components/ui/YandexMetrika';
@@ -18,8 +19,10 @@ const onest = Onest({
 	variable: '--font-onest',
 });
 
-// номер счётчика Метрики; в dev не считаем, чтобы не засорять статистику
-const ymId = process.env.NODE_ENV === 'production' ? Number(process.env.YANDEX_METRIKA_ID) : 0;
+// счётчики аналитики; в dev не считаем, чтобы не засорять статистику
+const isProd = process.env.NODE_ENV === 'production';
+const ymId = isProd ? Number(process.env.YANDEX_METRIKA_ID) : 0;
+const gaId = isProd ? process.env.GA_ID : undefined;
 
 export const metadata: Metadata = {
 	metadataBase: new URL(SITE_URL),
@@ -66,6 +69,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
 				</div>
 				{ymId > 0 && <YandexMetrika id={ymId} />}
 			</body>
+			{gaId && <GoogleAnalytics gaId={gaId} />}
 		</html>
 	);
 }
