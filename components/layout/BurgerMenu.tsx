@@ -31,6 +31,16 @@ export default function BurgerMenu() {
 		};
 	}, [open]);
 
+	// любая ссылка (пункт меню, лого в шапке) закрывает меню — даже если путь не меняется
+	useEffect(() => {
+		if (!open) return;
+		const onClick = (e: MouseEvent) => {
+			if ((e.target as Element).closest('a[href]')) setOpen(false);
+		};
+		document.addEventListener('click', onClick);
+		return () => document.removeEventListener('click', onClick);
+	}, [open]);
+
 	return (
 		// trap-focus: клики вне меню разрешены, иначе кнопка в шапке не закроет его
 		<Dialog.Root open={open} onOpenChange={setOpen} modal='trap-focus'>
@@ -72,9 +82,7 @@ export default function BurgerMenu() {
 									className={cn(
 										'w-fit transition-colors hover:text-accent',
 										!l.ready && 'opacity-30 pointer-events-none',
-									)}
-
-									onClick={() => setOpen(false)}>
+									)}>
 									{l.label}
 								</Text>
 								{!l.ready && (

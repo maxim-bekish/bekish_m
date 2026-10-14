@@ -3,6 +3,7 @@ import Contacts from '@/components/main/Contacts';
 import PhysicsHero from '@/components/sections/PhysicsHero';
 import Skills from '@/components/main/Skills';
 import Works from '@/components/main/Works';
+import { ViewTransition } from 'react';
 
 import { Marquee } from '@/components/ui/Marquee';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site';
@@ -67,7 +68,7 @@ const personJsonLd = {
 
 export default function Home() {
 	return (
-		<>
+		<ViewTransition enter='page' exit='page' default='none'>
 			<script
 				type='application/ld+json'
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
@@ -81,6 +82,6 @@ export default function Home() {
 			{/* <Feedback />
 			<Faq /> */}
 			<Contacts />
-		</>
+		</ViewTransition>
 	);
 }

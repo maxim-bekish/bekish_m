@@ -6,34 +6,27 @@ import { Download } from 'lucide-react';
 
 const lineTextTwo = [
 	{ value: 3, text: 'года в разработке' },
-	{ value: 6, text: 'проектов в резюме' },
-	{ value: 5, text: 'инструментов: Vue, Nuxt, React, Next.js, Astro' },
-	{ value: 2, text: 'роли: дизайнер интерфейса и фронтенд' },
+	{ value: 12, text: 'проектов в резюме' },
+	{ value: 10, text: 'технологий' },
 ];
 
 export default function About() {
 	return (
 		<section id='about' className='pt-(--section-y)'>
 			<div className='border-y border-line '>
-				<Reveal className='wrapper-xl grid grid-cols-2 tab:grid-cols-4 '>
+				<Reveal className='wrapper-xl grid grid-cols-1 xs:grid-cols-3 '>
 					{lineTextTwo.map((item, i) => {
 						return (
 							<div
 								key={item.text}
-								className='py-12 px-7 border-r border-line last:border-r-0 flex flex-col w-full items-center'>
+								className='py-5 -mx-3  xs:py-12 px-7 border-b xs:border-b-0 xs:border-r border-line last:border-r-0 last:border-b-0 flex flex-col w-screen xs:w-full items-center'>
 								<div>
 									<Text variant='stat'>
 										<CountUp value={item.value} />
 									</Text>
-									{i === 0 && (
-										<Text
-											as='span'
-											color='accent'
-											className='ml-2'
-											variant='stat'>
-											+
-										</Text>
-									)}
+									<Text as='span' color='accent' className='ml-2' variant='stat'>
+										+
+									</Text>
 								</div>
 								<Text variant='body' color='muted'>
 									{item.text}
