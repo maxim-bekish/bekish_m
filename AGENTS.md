@@ -14,10 +14,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Текст
 
-- Текст выводим через компонент `Text` (`components/ui/Text.tsx`) с пропсами `variant` и `color`, а не голыми классами.
+- Текст выводим через компонент `Text` (`components/ui/Text/`) с пропсами `variant` и `color`, а не голыми классами.
 - Размеры: `hero-letter`, `display`, `section`, `hero`, `stat`, `lead`, `title`, `caps`, `body`, `body-sm`, `terminal`.
 - Шрифты: `font-display`, `font-sans`, `font-mono`.
-- Новый размер добавляется в трёх местах: `--text-*` в `@theme` (`app/globals.css`), `textSizes` (`lib/utils.ts`), `variants` в `Text.tsx`. TypeScript проверяет, что последние два совпадают.
+- Новый размер добавляется в трёх местах: `--text-*` в `@theme` (`app/globals.css`), `textSizes` (`lib/utils.ts`), `variants` в `components/ui/Text/Text.variants.ts`. TypeScript проверяет, что последние два совпадают.
 - Нельзя: `text-sm`, `text-2xl`, `text-[20px]`, `font-[...]`, `leading-[...]`, `tracking-[...]`, `style={{ fontSize }}`.
 
 ## Цвета

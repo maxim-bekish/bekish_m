@@ -1,12 +1,12 @@
 'use client';
 
-import { Popover } from '@base-ui/react/popover';
-import { useState, type MouseEvent } from 'react';
 import { applyAccent, presetHex, readAccent, resetAccent } from '@/lib/accent';
 import { circularReveal } from '@/lib/circularReveal';
 import { cn } from '@/lib/utils';
+import { Popover } from '@base-ui/react/popover';
+import { useState, type MouseEvent } from 'react';
 import { Button } from '../ui/Button';
-import { Text } from '../ui/Text';
+import { Text } from '@/components/ui/Text';
 
 // классы пишем целиком: Tailwind не увидит собранное строкой `bg-preset-${code}`
 const mainColors = [
@@ -84,7 +84,8 @@ export default function DesignPopover() {
 							Главный Цвет
 						</Text>
 						<Text className='mb-4' variant='body-sm' color='night-muted'>
-							Весь сайт собран на CSS-переменных — выберите цвет, и он поменяется везде.
+							Весь сайт собран на CSS-переменных — выберите цвет, и он поменяется
+							везде.
 						</Text>
 						<div className='mb-4 grid grid-cols-4 gap-2.5' id='dz-swatches'>
 							{mainColors.map((c) => (

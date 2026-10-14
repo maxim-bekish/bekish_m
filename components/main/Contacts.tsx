@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils';
 import { ArrowUpRight, Check, Copy, CornerDownLeft } from 'lucide-react';
 import { useEffect, useRef, useState, type ChangeEvent } from 'react';
-import { Text } from '../ui/Text';
+import { Text } from '@/components/ui/Text';
 
 const EMAIL = 'maxamax997@gmail.com';
 

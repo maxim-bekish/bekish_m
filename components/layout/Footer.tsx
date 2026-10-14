@@ -1,16 +1,8 @@
+import { nav } from '@/domain/nav';
 import NowTime from '../ui/NowTime';
-import { Text } from '../ui/Text';
+import { Text } from '@/components/ui/Text';
 
-const nav = [
-	{ link: '/', label: 'Главная' },
-	{ link: '/#about', label: 'Обо мне' },
-	{ link: '/#cases', label: 'Работы' },
-	// { link: '/#skills', label: 'Что умею' },
-	// { link: '#', label: 'Вопросы' },
-	// TODO: вернуть, когда появится страница /games
-	// { link: '/games', label: 'Игры' },
-	{ link: '/#contacts', label: 'Контакты' },
-];
+
 export default function Footer() {
 	return (
 		<footer className='overflow-hidden bg-night-raised pt-[clamp(48px,6vw,72px)] text-night-ink'>
@@ -21,7 +13,7 @@ export default function Footer() {
 							<li key={item.label}>
 								<a
 									className='inline-flex min-h-11 items-center font-display text-caps uppercase text-night-ink hover:text-accent'
-									href={item.link}>
+									href={item.href}>
 									{item.label}
 								</a>
 							</li>

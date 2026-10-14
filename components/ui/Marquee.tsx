@@ -1,5 +1,5 @@
-import { Text } from './Text';
 import { cn } from '@/lib/utils';
+import { Text } from '@/components/ui/Text';
 
 interface MarqueeProps {
 	arr: string[];

@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { Text } from '../ui/Text';
+import { Text } from '@/components/ui/Text';
 
 const formatter = new Intl.DateTimeFormat('ru-RU', {
 	hour: '2-digit',

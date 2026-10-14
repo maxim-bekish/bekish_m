@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import { Text } from '../ui/Text';
+import { ReactNode } from 'react';
+import { Text } from '@/components/ui/Text';
 
 interface BadgeProps {
 	variant?: 'pulse' | 'active' | 'default';

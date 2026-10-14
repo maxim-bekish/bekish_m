@@ -1,6 +1,6 @@
-import { cn, type TextSize } from '@/lib/utils';
-import { cva, type VariantProps } from 'class-variance-authority';
-import type { ComponentPropsWithoutRef, ElementType } from 'react';
+import type { TextSize } from '@/lib/utils';
+import { cva } from 'class-variance-authority';
+import type { ElementType } from 'react';
 
 // satisfies: TS упадёт, если варианты разойдутся с textSizes из lib/utils
 const variants = {
@@ -17,7 +17,7 @@ const variants = {
 	terminal: 'font-mono text-terminal',
 } satisfies Record<TextSize, string>;
 
-const text = cva('', {
+export const text = cva('', {
 	variants: {
 		variant: variants,
 		color: {
@@ -37,10 +37,7 @@ const text = cva('', {
 	},
 });
 
-type Variant = NonNullable<VariantProps<typeof text>['variant']>;
-
-// какой тег ставить, если `as` не указан
-const defaultTag: Record<Variant, ElementType> = {
+export const defaultTag: Record<TextSize, ElementType> = {
 	'hero-letter': 'span',
 	display: 'h1',
 	section: 'h2',
@@ -53,19 +50,3 @@ const defaultTag: Record<Variant, ElementType> = {
 	'body-sm': 'p',
 	terminal: 'span',
 };
-
-type TextProps<T extends ElementType> = VariantProps<typeof text> & {
-	as?: T;
-	className?: string;
-} & Omit<ComponentPropsWithoutRef<T>, 'as' | 'color' | 'className'>;
-
-export function Text<T extends ElementType = 'p'>({
-	as,
-	variant,
-	color,
-	className,
-	...props
-}: TextProps<T>) {
-	const Tag = as ?? defaultTag[variant ?? 'body'];
-	return <Tag className={cn(text({ variant, color }), className)} {...props} />;
-}

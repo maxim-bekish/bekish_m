@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { ArrowRight, Paperclip } from 'lucide-react';
-import { Text } from '../ui/Text';
-import { cn } from '@/lib/utils';
 import { useTilt } from '@/hooks/useTilt';
+import { cn } from '@/lib/utils';
+import { Paperclip } from 'lucide-react';
+import Link from 'next/link';
+import { useState } from 'react';
+import { Text } from '@/components/ui/Text';
 
 interface Skill {
 	id: string;
