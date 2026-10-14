@@ -164,7 +164,7 @@
 	--text-terminal--line-height: 1.7;
 	--text-terminal--font-weight: 400;
 
-	--section-y: clamp(80px, 11vw, 150px);
+	--section-y: clamp(70px, 11vw, 150px);
 
 	/* бегущая строка: каждая копия списка уезжает на свою ширину */
 	--animate-marquee: marquee 30s linear infinite;
@@ -259,4 +259,55 @@ html.vt-reveal.vt-reverse::view-transition-old(root) {
 }
 html.vt-reveal.vt-reverse::view-transition-new(root) {
 	z-index: 1;
+}
+
+/* ── Переходы между страницами (React <ViewTransition enter/exit> в page.tsx каждой страницы) ──
+   старая страница быстро гаснет, новая поднимается на 24px — как появление разделов (reveal);
+   превью работы и заголовок перетекают в кейс (.morph); шапка стоит на месте */
+::view-transition-old(.page) {
+	animation: 200ms ease-in both vt-fade reverse;
+}
+::view-transition-new(.page) {
+	animation: 450ms cubic-bezier(0.2, 0.8, 0.2, 1) 120ms both vt-rise;
+}
+::view-transition-group(.morph) {
+	animation-duration: 700ms;
+	animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+::view-transition-image-pair(.morph) {
+	animation-name: vt-blur;
+}
+::view-transition-group(site-header),
+::view-transition-group(site-header-plain) {
+	animation: none;
+}
+@keyframes vt-fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes vt-rise {
+	from {
+		opacity: 0;
+		transform: translateY(24px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes vt-blur {
+	30% {
+		filter: blur(3px);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
 }

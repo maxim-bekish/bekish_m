@@ -292,12 +292,24 @@ export default function Contact() {
 					{EMAIL}
 				</Text>
 
-				<ul className='flex flex-wrap justify-center gap-x-6 gap-y-1'>
+				<ul className='flex flex-wrap justify-center gap-x-6 gap-y-3'>
+						{LINKS.map((link) => (
+						<li key={link.label}>
+							<a
+								href={link.href}
+								target='_blank'
+								rel='noopener noreferrer'
+								className='inline-flex  items-center gap-1.5 font-display text-caps text-on-accent uppercase hover:underline hover:underline-offset-4'>
+								{link.label}
+								<ArrowUpRight strokeWidth={1.5} size={14} />
+							</a>
+						</li>
+					))}
 					<li>
 						<button
 							type='button'
 							onClick={copyEmail}
-							className='inline-flex min-h-11 cursor-pointer items-center gap-1.5 font-display text-caps text-on-accent uppercase hover:underline hover:underline-offset-4'>
+							className='inline-flex cursor-pointer items-center gap-1.5 font-display text-caps text-on-accent uppercase hover:underline hover:underline-offset-4'>
 							{copied ? (
 								<Check strokeWidth={1.5} size={14} />
 							) : (
@@ -308,18 +320,7 @@ export default function Contact() {
 							</span>
 						</button>
 					</li>
-					{LINKS.map((link) => (
-						<li key={link.label}>
-							<a
-								href={link.href}
-								target='_blank'
-								rel='noopener noreferrer'
-								className='inline-flex min-h-11 items-center gap-1.5 font-display text-caps text-on-accent uppercase hover:underline hover:underline-offset-4'>
-								{link.label}
-								<ArrowUpRight strokeWidth={1.5} size={14} />
-							</a>
-						</li>
-					))}
+				
 				</ul>
 			</div>
 		</section>

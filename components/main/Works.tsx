@@ -6,6 +6,7 @@ import Badge from '../ui/Badge';
 import { Text } from '@/components/ui/Text';
 import { PreviewImg } from '../ui/PreviewImg';
 import { Reveal } from '../ui/Reveal';
+import { ViewTransition } from 'react';
 
 export default function Works() {
 	return (
@@ -25,16 +26,26 @@ export default function Works() {
 							className={cn('group relative ', i === 0 && 'md:col-span-2')}
 							key={el.id}>
 							<Link href={`/work/${el.id}`} className='flex flex-col gap-4'>
-								<PreviewImg
-									src={el.preview.src}
-									alt={el.preview.description}
-									sizes={i === 0 ? '70vw' : '(min-width: 861px) 50vw, 100vw'}
-								/>
+								<ViewTransition
+									name={`work-cover-${el.id}`}
+									share='morph'
+									default='none'>
+									<PreviewImg
+										src={el.preview.src}
+										alt={el.preview.description}
+										sizes={i === 0 ? '70vw' : '(min-width: 861px) 50vw, 100vw'}
+									/>
+								</ViewTransition>
 								<div className='flex flex-col gap-2'>
 									<div className='flex justify-between'>
-										<Text variant='title' className='whitespace-nowrap'>
-											{el.title}
-										</Text>
+										<ViewTransition
+											name={`work-title-${el.id}`}
+											share='morph'
+											default='none'>
+											<Text variant='title' className='whitespace-nowrap'>
+												{el.title}
+											</Text>
+										</ViewTransition>
 
 										<div className='flex flex-wrap justify-end gap-1.5'>
 											{el.tags.map((item) => {

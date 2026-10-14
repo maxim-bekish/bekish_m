@@ -16,7 +16,7 @@ const classes = {
 		default: 'border-night-ink/30 text-night-soft',
 	},
 	size: {
-		sm: 'px-2.5 py-1',
+		sm: 'xs:px-2.5 xs:py-1 px-1.5 py-0.5',
 		md: 'px-3 py-1.5',
 		lg: 'min-h-[clamp(38px,3.8vw,48px)]  px-[clamp(16px,1.6vw,22px)]',
 	},

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ViewTransition } from 'react';
 
 /**
  * Лаборатория: всё дерево демо одним массивом.
@@ -272,5 +273,9 @@ export const metadata: Metadata = {
 };
 
 export default function Laboratory() {
-	return <div className='py-(--section-y) wrapper-xl h-screen'>laboratory</div>;
+	return (
+		<ViewTransition enter='page' exit='page' default='none'>
+			<div className='py-(--section-y) wrapper-xl h-screen'>laboratory</div>
+		</ViewTransition>
+	);
 }

@@ -413,13 +413,13 @@ export default function PhysicsHero({
 					Хватайте буквы и бросайте
 				</Text>
 
-				<div ref={barRef} className='mt-auto border-t border-night-ink/25'>
-					<div className='wrapper-xl flex items-center justify-between gap-3 py-3'>
+				<div className='mt-auto border-t border-night-ink/25'>
+					<div ref={barRef}  className='wrapper-xl flex items-center justify-between gap-3 py-3'>
 						<Button
 							variant='ghost'
-							className='[&_svg]:size-4'
+							className='[&_svg]:size-4 flex-1 md:flex-none '
 							onClick={() => resetRef.current()}>
-							<RotateCcw strokeWidth={1.5} />
+							<RotateCcw className='text-accent hidden sm:inline-flex' strokeWidth={1.5} />
 							Собрать заново
 						</Button>
 						<Button
@@ -432,9 +432,10 @@ export default function PhysicsHero({
 						</Button>
 						<Button
 							variant='ghost'
+							className='flex-1 md:flex-none '
 							render={<a href='#contacts' />}
 							nativeButton={false}>
-							Открыт к предложениям
+							Open to work
 						</Button>
 					</div>
 				</div>

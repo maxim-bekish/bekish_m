@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Text } from '@/components/ui/Text';
 import { Reveal } from '../ui/Reveal';
+import Badge from '../ui/Badge';
 
 interface Skill {
 	id: string;
@@ -23,7 +24,7 @@ interface Extra {
 }
 
 const skills: Skill[] = [
-		{
+	{
 		id: 'vue',
 		label: 'Vue 3 и Nuxt',
 		big: 'Vue',
@@ -78,7 +79,10 @@ const extras: Extra[] = [
 	{ title: 'ИИ в работе', text: 'Cursor и Claude забирают рутину, решения остаются за мной.' },
 
 	{ title: 'Astro', text: 'Быстрые лендинги и контентные сайты без лишнего JS.' },
-		{ title: 'Стейт-менеджеры', text: 'Pinia, Vuex, Redux Toolkit, Zustand: выбираю под задачу, а не по привычке.' },
+	{
+		title: 'Стейт-менеджеры',
+		text: 'Pinia, Vuex, Redux Toolkit, Zustand: выбираю под задачу, а не по привычке.',
+	},
 	{
 		title: 'Лаборатория',
 		text: 'Эксперименты с интерфейсами: лучше один раз увидеть',
@@ -92,7 +96,9 @@ export default function Skills() {
 	const { ref: cardRef, onPointerMove, onPointerLeave } = useTilt<HTMLDivElement>();
 
 	return (
-		<section id='skills' className='bg-night-bg py-(--section-y) text-night-ink'>
+		<section
+			id='skills'
+			className='bg-night-bg pb-(--section-y) xs:py-(--section-y) text-night-ink'>
 			<Reveal className='wrapper-xl'>
 				<Text variant='section' color='accent'>
 					Что умею
@@ -185,7 +191,7 @@ export default function Skills() {
 								<Text
 									variant='body-sm'
 									color='night-muted'
-									className='transition-colors duration-300 group-hover:text-on-accent'>
+									className='transition-colors duration-300 group-hover:text-on-accent max-w-[95%]'>
 									{item.text}
 								</Text>
 							</>
@@ -210,14 +216,15 @@ export default function Skills() {
 											className='absolute top-2 right-3 text-accent group-hover:text-on-accent'
 										/>
 
-										<Text
-											variant='caps'
-											className='border w-fit absolute bottom-2 right-2 border-accent/60 bg-accent/10 rounded-full p-0.5 px-2'>
+										<Badge
+											variant='default'
+											size='sm'
+											className='absolute bottom-2 right-2'>
 											Скоро
-										</Text>
+										</Badge>
 									</Link>
 								) : (
-									<div className={cell}>{content}</div>
+									<div className={cn(cell)}>{content}</div>
 								)}
 							</li>
 						);
