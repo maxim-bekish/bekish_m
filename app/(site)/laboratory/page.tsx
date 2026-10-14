@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 /**
  * Лаборатория: всё дерево демо одним массивом.
  * Источник: макет v30 (https://claude.ai/artifact/Sc8YNAGxtqJZHmrkGpZ2bq#lab).
@@ -262,6 +264,12 @@
 // 	}
 // 	return null;
 // }
+
+// заглушка — в поиск не отдаём, пока раздел не готов
+export const metadata: Metadata = {
+	title: 'Лаборатория',
+	robots: { index: false },
+};
 
 export default function Laboratory() {
 	return <div className='py-(--section-y) wrapper-xl h-screen'>laboratory</div>;

@@ -5,6 +5,7 @@ import Skills from '@/components/main/Skills';
 import Works from '@/components/main/Works';
 
 import { Marquee } from '@/components/ui/Marquee';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site';
 
 const lineTextOne = [
 	'Frontend Developer',
@@ -50,9 +51,27 @@ const lineTextThree = [
 	'Supabase',
 ];
 
+// разметка для поисковиков: кто владелец сайта и где ещё его найти
+const personJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: SITE_NAME,
+	alternateName: 'Maksim Bekish',
+	jobTitle: 'Фронтенд-разработчик',
+	description: SITE_DESCRIPTION,
+	url: SITE_URL,
+	address: { '@type': 'PostalAddress', addressLocality: 'Минск', addressCountry: 'BY' },
+	knowsAbout: ['Vue', 'Nuxt', 'React', 'Next.js', 'TypeScript', 'Figma'],
+	sameAs: ['https://github.com/maxim-bekish', 'https://t.me/maxa_max'],
+};
+
 export default function Home() {
 	return (
 		<>
+			<script
+				type='application/ld+json'
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+			/>
 			<PhysicsHero  />
 			<Marquee variant='accent' arr={lineTextOne} />
 			<About />
