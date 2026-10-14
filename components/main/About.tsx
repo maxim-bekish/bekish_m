@@ -1,26 +1,30 @@
 import { Button } from '@/components/ui/Button';
+import { CountUp } from '@/components/ui/CountUp';
+import { Reveal } from '@/components/ui/Reveal';
 import { Text } from '@/components/ui/Text';
 import { Download } from 'lucide-react';
 
 const lineTextTwo = [
 	{ value: 3, text: 'года в разработке' },
 	{ value: 6, text: 'проектов в резюме' },
-	{ value: 4, text: 'фреймворка: Vue, Nuxt, React, Next.js' },
-	{ value: 1, text: 'фронтенд на весь MentorAI' },
+	{ value: 5, text: 'инструментов: Vue, Nuxt, React, Next.js, Astro' },
+	{ value: 2, text: 'роли: дизайнер интерфейса и фронтенд' },
 ];
 
 export default function About() {
 	return (
 		<section id='about' className='pt-(--section-y)'>
 			<div className='border-y border-line '>
-				<div className='wrapper-xl grid grid-cols-2 tab:grid-cols-4 '>
+				<Reveal className='wrapper-xl grid grid-cols-2 tab:grid-cols-4 '>
 					{lineTextTwo.map((item, i) => {
 						return (
 							<div
-								key={item.value}
+								key={item.text}
 								className='py-12 px-7 border-r border-line last:border-r-0 flex flex-col w-full items-center'>
 								<div>
-									<Text variant='stat'>{item.value}</Text>
+									<Text variant='stat'>
+										<CountUp value={item.value} />
+									</Text>
 									{i === 0 && (
 										<Text
 											as='span'
@@ -37,9 +41,10 @@ export default function About() {
 							</div>
 						);
 					})}
-				</div>
+				</Reveal>
 			</div>
-			<div className='grid grid-cols-1 flex-col py-(--section-y) md:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] wrapper-xl items-start gap-x-16 gap-y-8 '>
+
+			<Reveal className='grid grid-cols-1 flex-col py-(--section-y) md:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] wrapper-xl items-start gap-x-16 gap-y-8 '>
 				<div className='flex flex-col gap-4.5 w-fit'>
 					<Text variant='section' className='whitespace-nowrap'>
 						Обо мне
@@ -62,7 +67,7 @@ export default function About() {
 
 					<Button icon={<Download />}>Резюме PDF</Button>
 				</div>
-			</div>
+			</Reveal>
 		</section>
 	);
 }

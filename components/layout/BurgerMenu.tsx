@@ -4,8 +4,7 @@ import { Dialog } from '@base-ui/react/dialog';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { Text } from '@/components/ui/Text';
-
- 
+import { cn } from '@/lib/utils';
 
 // выезд текста; Base UI ждёт конца перехода у Popup, поэтому у фона та же длительность.
 // Закрытие — зеркало открытия: ease-in вместо ease-out, иначе уход выглядит рывком
@@ -65,16 +64,28 @@ export default function BurgerMenu() {
 
 					<nav className='wrapper-xl flex w-full flex-1 flex-col justify-center gap-2'>
 						{nav.map((l) => (
-							<Text
-								key={l.href}
-								as={Link}
-								href={l.href}
-								variant='section'
-								className='w-fit transition-colors hover:text-accent'
-								// шапка живёт в layout и не перемонтируется — закрываем вручную
-								onClick={() => setOpen(false)}>
-								{l.label}
-							</Text>
+							<div className='flex gap-3 items-start' key={l.href}>
+								<Text
+									as={Link}
+									href={l.href}
+									variant='section'
+									className={cn(
+										'w-fit transition-colors hover:text-accent',
+										!l.ready && 'opacity-30 pointer-events-none',
+									)}
+
+									onClick={() => setOpen(false)}>
+									{l.label}
+								</Text>
+								{!l.ready && (
+									<Text
+										as='span'
+										variant='body'
+										className='border border-accent/60 bg-accent/10 rounded-full p-0.5 px-2 w-fit pointer-events-none'>
+										скоро
+									</Text>
+								)}
+							</div>
 						))}
 					</nav>
 				</Dialog.Popup>

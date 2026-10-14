@@ -16,8 +16,8 @@ const lineTextOne = [
 	'Full-time',
 	'Freelance',
 	'Remote',
-	'Минск',
-	'Максим Бекиш',
+	'Minsk',
+	'Maksim Bekish',
 ];
 
 const lineTextThree = [

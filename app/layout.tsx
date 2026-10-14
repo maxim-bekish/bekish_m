@@ -23,9 +23,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<'/'>) {
 	return (
 		// suppressHydrationWarning: скрипт ниже ставит style на <html> до гидрации
+		// scroll-smooth — плавный переход по якорям (#about, #contacts); data-scroll-behavior —
+		// при смене страницы Next на время отключает плавность, чтобы не ехать к верху через весь сайт
 		<html
 			lang='ru'
-			className={`scrollbar ${unbounded.variable} ${onest.variable}`}
+			data-scroll-behavior='smooth'
+			className={`scrollbar scroll-smooth motion-reduce:scroll-auto ${unbounded.variable} ${onest.variable}`}
 			suppressHydrationWarning>
 			<head>
 				<AccentInitScript />

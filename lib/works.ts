@@ -13,6 +13,23 @@ import zelectronicPreview from '@/assets/works/zelectronic/preview.avif';
 import zelectronic1 from '@/assets/works/zelectronic/1.avif';
 import zelectronic2 from '@/assets/works/zelectronic/2.avif';
 import zelectronic3 from '@/assets/works/zelectronic/3.avif';
+import soberizaborPreview from '@/assets/works/soberizabor/preview.avif';
+import soberizabor1 from '@/assets/works/soberizabor/1.avif';
+import soberizabor2 from '@/assets/works/soberizabor/2.avif';
+import photographerPreview from '@/assets/works/photographer/preview.avif';
+import photographer1 from '@/assets/works/photographer/1.avif';
+import photographer2 from '@/assets/works/photographer/2.avif';
+import photographer3 from '@/assets/works/photographer/3.avif';
+import photographer4 from '@/assets/works/photographer/4.avif';
+import ranepaСampusPreview from '@/assets/works/ranepa-campus/preview.avif';
+import ranepaСampus1 from '@/assets/works/ranepa-campus/1.avif';
+import ranepaСampus2 from '@/assets/works/ranepa-campus/2.avif';
+import ranepaСampus3 from '@/assets/works/ranepa-campus/3.avif';
+import siburPreview from '@/assets/works/sibur/preview.avif';
+import sibur1 from '@/assets/works/sibur/1.avif';
+import sibur2 from '@/assets/works/sibur/2.avif';
+import sibur3 from '@/assets/works/sibur/3.avif';
+import sibur4 from '@/assets/works/sibur/4.avif';
 
 type Image = { src: StaticImageData; description: string };
 
@@ -64,7 +81,7 @@ export const works: Work[] = [
 			'Голосовой ввод и режим подготовки к ОГЭ/ЕГЭ в поле запроса.',
 		],
 		description:
-			"Образовательная ИИ-платформа:\nучителю — проверка работ, планы уроков и контрольные за минуты, ученику — курсы и ИИ-наставник.",
+			'Образовательная ИИ-платформа:\nучителю — проверка работ, планы уроков и контрольные за минуты, ученику — курсы и ИИ-наставник.',
 		link: 'https://mentor-ai.ru',
 		preview: {
 			src: mentorAiPreview,
@@ -168,36 +185,126 @@ export const works: Work[] = [
 		],
 		tags: ['JavaScript', 'БЭМ', 'Swiper', '1C-Bitrix'],
 	},
-	// {
-	// 	id: 'soberizabor',
-	// 	title: 'Собери забор',
-	// 	description: 'Лендинг алюминиевых ограждений с онлайн-калькулятором стоимости',
-	// 	link: 'https://soberizabor.ru/',
-	// 	image: 'https://picsum.photos/id/10/400/200',
-	// 	tags: ['Astro', 'HTML', 'CSS', 'JavaScript'],
-	// },
-	// {
-	// 	id: 'photographer-portfolio',
-	// 	title: 'Сайт фотографа',
-	// 	description: 'Портфолио фотографа с галереями работ',
-	// 	link: 'https://photo-two-eta.vercel.app/',
-	// 	image: 'https://picsum.photos/id/10/400/200',
-	// 	tags: ['React', 'Next.js', 'TypeScript', 'GSAP'],
-	// },
-	// {
-	// 	id: 'ranepa-campus',
-	// 	title: 'РАНХиГС',
-	// 	description: 'Система управления кампусом',
-	// 	link: 'https://demo.campus.ranepa.ru/sign-in/secret-link',
-	// 	image: 'https://picsum.photos/id/10/400/200',
-	// 	tags: ['Nuxt', 'TypeScript', 'SCSS', 'PixiJS'],
-	// },
-	// {
-	// 	id: 'sibur-annual-report',
-	// 	title: 'Сибур',
-	// 	description: 'Интерактивный интегрированный годовой отчёт за 2024 год',
-	// 	link: 'https://ar24.sibur.ru/',
-	// 	image: 'https://picsum.photos/id/10/400/200',
-	// 	tags: ['Astro', 'HTML', 'CSS', 'JavaScript', 'GSAP'],
-	// },
+	{
+		id: 'soberizabor',
+		title: 'Собери забор',
+		role: ['Frontend'],
+		stack: ['Astro', 'HTML', 'CSS', 'JavaScript'],
+		task: '«Собери забор» продаёт алюминиевые ограждения для частных домов: забор приходит в коробке и собирается без сварки. Нужен был лендинг премиального уровня, который объясняет продукт через схему и преимущества, показывает комплектующие с ценами и позволяет сразу посчитать стоимость своего забора.',
+		myTasks: [
+			'Сверстал адаптивный лендинг на Astro по макету: тёмная тема, градиенты, «граффити»-акценты в типографике.',
+			'Собрал онлайн-калькулятор: длина ограждения, тип столбов, калитки и ворота пересчитываются в комплект и предварительную стоимость.',
+			'Сделал интерактивную схему забора с подписями элементов: секции, стойки, ворота, калитка, арка.',
+			'Сверстал карусель комплектующих с ценами и характеристиками.',
+			'Сверстал форму заявки с валидацией обязательных полей и согласием на обработку данных.',
+			'Отдельная мобильная версия шапки и блоков.',
+		],
+		description: 'Лендинг алюминиевых ограждений с онлайн-калькулятором стоимости комплекта.',
+		link: 'https://soberizabor.ru/',
+		preview: {
+			src: soberizaborPreview,
+			description: 'Лендинг «Собери забор»',
+		},
+		images: [
+			{
+				src: soberizabor1,
+				description: 'Схема забора с подписями элементов',
+			},
+			{
+				src: soberizabor2,
+				description: 'Форма заявки',
+			},
+		],
+		tags: ['Astro', 'HTML', 'CSS', 'JavaScript'],
+	},
+	{
+		id: 'photographer',
+		title: 'Сайт фотографа',
+		role: ['Frontend', 'Designer'],
+		stack: ['React', 'Next.js', 'TypeScript', 'GSAP'],
+		task: 'Шаблон сайта-портфолио для фотографа: показать работы крупно и атмосферно, рассказать об услугах и ценах и довести посетителя до заявки на съёмку. Делал как собственный продукт для продажи фотографам. [Уточните, что было самым сложным]',
+		myTasks: [
+			'Спроектировал и сверстал сайт на Next.js и TypeScript: главная, «Обо мне», работы, отзывы, блог, контакты.',
+			'Анимации на GSAP: крупная типографика на первом экране, плавное появление блоков при скролле, бегущая строка в футере.',
+			'Счётчики достижений, карточки альбомов по жанрам и блок направлений съёмки.',
+			'Бесконечная лента отзывов и FAQ-аккордеон с ценами и условиями.',
+			'Полноэкранное меню и адаптивная вёрстка под мобильные устройства.',
+			'Деплой на Vercel.',
+		],
+		description:
+			'Портфолио фотографа с анимациями на GSAP, альбомами работ, отзывами и блогом.',
+		link: 'https://photo-two-eta.vercel.app/',
+		preview: {
+			src: photographerPreview,
+			description: 'Главная страница сайта фотографа',
+		},
+		images: [
+			{ src: photographer1, description: 'Карусель альбомов с тегами жанров' },
+			{ src: photographer2, description: 'Страница альбома с крупным заголовком' },
+			{ src: photographer3, description: 'Блог: сетка статей с курсором «Читать»' },
+			{
+				src: photographer4,
+				description: 'Контакты: анимированная диафрагма и бегущая строка',
+			},
+		],
+		tags: ['React', 'Next.js', 'TypeScript', 'GSAP'],
+	},
+	{
+		id: 'ranepa-campus',
+		title: 'РАНХиГС',
+		role: ['Frontend'],
+		stack: ['Nuxt', 'Vue', 'TypeScript', 'SCSS', 'PixiJS'],
+		task: 'Деловая игра-симулятор для обучения управленцев в Высшей школе государственного управления РАНХиГС. Участник управляет университетским кампусом: распределяет бюджет, запускает проекты и улучшает объекты, чтобы за игровую сессию достичь целевых социально-экономических показателей. Нужно было сделать интерактивную карту кампуса и игровой интерфейс, в котором легко разобраться в экономике решений. [Уточните, что было самым сложным]',
+		myTasks: [
+			'Сделал интерактивную карту кампуса на PixiJS: здания-объекты кликабельны и ведут в своё управление.',
+			'Реализовал игровой цикл по годам: таймлайн 2024–2025, таймер хода, бюджет в шапке.',
+			'Сверстал экраны управления: сферы, сегменты, объекты, улучшения с ценами и выбором.',
+			'Сделал модальное окно статистики: задачи региона, прогресс по социально-экономическим эффектам, статус тестирования.',
+			'Сверстал карточки статистики объекта и пересчёт расходов на содержание и улучшения.',
+		],
+		description: 'Деловая игра-симулятор управления кампусом с интерактивной картой на PixiJS.',
+		link: 'https://demo.campus.ranepa.ru/sign-in/secret-link',
+		preview: {
+			src: ranepaСampusPreview,
+			description: 'Интерактивная карта кампуса',
+		},
+		images: [
+			{
+				src: ranepaСampus1,
+				description: 'Статистика: задачи региона и прогресс по эффектам',
+			},
+			{ src: ranepaСampus2, description: 'Социальная сфера: проекты и сегменты' },
+			{ src: ranepaСampus3, description: 'Учебный комплекс: улучшения и статистика объекта' },
+		],
+		tags: ['Nuxt', 'TypeScript', 'SCSS', 'PixiJS'],
+	},
+	{
+		id: 'sibur-annual-report',
+		title: 'СИБУР',
+		role: ['Frontend'],
+		stack: ['Astro', 'HTML', 'CSS', 'JavaScript', 'GSAP'],
+		task: 'Интерактивная веб-версия интегрированного годового отчёта ПАО «СИБУР Холдинг» за 2024 год. Нужно было превратить большой корпоративный отчёт с цифрами, схемами и картами в удобный сайт: с навигацией по разделам, анимированной инфографикой, русской и английской версией и скачиванием PDF. [Уточните, что было самым сложным]',
+		myTasks: [
+			'Сверстал разделы отчёта на Astro: портрет группы, бизнес-модель, финансовые результаты, стратегия.',
+			'Сделал интерактивную карту присутствия: раскрывающиеся кластеры, всплывающие описания, легенда объектов.',
+			'Анимации на GSAP: появление блоков при скролле, анимированные счётчики и диаграммы.',
+			'Видеообложка с управлением воспроизведением и полноэкранное меню по трём главам отчёта.',
+			'Карусель реализованных проектов по дивизионам.',
+			'Переключение языка RU/EN и скачивание отчёта в PDF.',
+		],
+		description:
+			'Интерактивный интегрированный годовой отчёт СИБУРа за 2024 год с картой присутствия и анимированной инфографикой.',
+		link: 'https://ar24.sibur.ru/',
+		preview: {
+			src: siburPreview,
+			description: 'Раздел «О СИБУРе» целиком',
+		},
+		images: [
+			{ src: sibur1, description: 'Интерактивная карта присутствия по кластерам' },
+			{ src: sibur2, description: 'Карусель реализованных проектов' },
+			{ src: sibur3, description: 'Полноэкранное меню по главам отчёта' },
+			{ src: sibur4, description: 'Обложка годового отчёта СИБУРа' },
+		],
+		tags: ['Astro', 'JavaScript', 'GSAP'],
+	},
 ];

@@ -4,12 +4,17 @@ import Badge from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Text } from '@/components/ui/Text';
 import { cn } from '@/lib/utils';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowDown, ArrowRight, RotateCcw } from 'lucide-react';
 import Matter from 'matter-js';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
 import photoSrc from '@/assets/preview.webp';
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const { Engine, Runner, Bodies, Body, Composite, Constraint, Events } = Matter;
 
@@ -80,8 +85,27 @@ export default function PhysicsHero({
 }: PhysicsHeroProps) {
 	const sectionRef = useRef<HTMLElement>(null);
 	const objectsRef = useRef<HTMLDivElement>(null);
+	const barRef = useRef<HTMLDivElement>(null);
 	const resetRef = useRef<() => void>(() => {});
 	const [grabbed, setGrabbed] = useState(false);
+
+	// нижняя панель гаснет за первые 200px скролла; autoAlpha в нуле ставит visibility: hidden,
+	// чтобы невидимые кнопки не ловили клики и фокус
+	useGSAP(
+		() => {
+			gsap.to(barRef.current, {
+				autoAlpha: 0,
+				ease: 'none',
+				scrollTrigger: {
+					trigger: sectionRef.current,
+					start: '10% top',
+					end: '70% top',
+					scrub: 0.3,
+				},
+			});
+		},
+		{ scope: sectionRef },
+	);
 
 	useEffect(() => {
 		const section = sectionRef.current;
@@ -389,7 +413,7 @@ export default function PhysicsHero({
 					Хватайте буквы и бросайте
 				</Text>
 
-				<div className='mt-auto border-t border-night-ink/25'>
+				<div ref={barRef} className='mt-auto border-t border-night-ink/25'>
 					<div className='wrapper-xl flex items-center justify-between gap-3 py-3'>
 						<Button
 							variant='ghost'
