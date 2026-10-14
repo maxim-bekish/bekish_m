@@ -10,8 +10,8 @@ import { ViewTransition } from 'react';
 
 export default function Works() {
 	return (
-		<section id='cases' className='py-(--section-y) wrapper-xl'>
-			<Reveal className='mb-[clamp(36px,5vw,64px)] flex-col sm:flex-row flex sm:items-end justify-between gap-6'>
+		<section id='cases' className='py-(--section-y)'>
+			<Reveal className='wrapper-xl mb-[clamp(36px,5vw,64px)] flex-col sm:flex-row flex sm:items-end justify-between gap-6'>
 				<Text variant='section' className='whitespace-nowrap'>
 					Работы
 				</Text>
@@ -19,7 +19,7 @@ export default function Works() {
 					Коммерческие проекты и то, что делаю для себя
 				</Text>
 			</Reveal>
-			<div className='grid grid-cols-1 gap-7 tab:grid-cols-2'>
+			<div className='wrapper-xl grid grid-cols-1 gap-7 tab:grid-cols-2'>
 				{works.map((el, i) => {
 					return (
 						<Reveal
