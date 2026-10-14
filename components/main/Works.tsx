@@ -11,7 +11,7 @@ import { ViewTransition } from 'react';
 export default function Works() {
 	return (
 		<section id='cases' className='py-(--section-y) wrapper-xl'>
-			<Reveal className='mb-[clamp(36px,5vw,64px)] flex items-end justify-between gap-6'>
+			<Reveal className='mb-[clamp(36px,5vw,64px)] flex-col sm:flex-row flex sm:items-end justify-between gap-6'>
 				<Text variant='section' className='whitespace-nowrap'>
 					Работы
 				</Text>
@@ -37,7 +37,7 @@ export default function Works() {
 									/>
 								</ViewTransition>
 								<div className='flex flex-col gap-2'>
-									<div className='flex justify-between'>
+									<div className='flex gap-3  justify-between flex-col sm:flex-row'>
 										<ViewTransition
 											name={`work-title-${el.id}`}
 											share='morph'
@@ -47,7 +47,7 @@ export default function Works() {
 											</Text>
 										</ViewTransition>
 
-										<div className='flex flex-wrap justify-end gap-1.5'>
+										<div className='flex flex-wrap sm:justify-end gap-1.5'>
 											{el.tags.map((item) => {
 												return (
 													<Badge key={el.id + item} size='sm'>

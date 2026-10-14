@@ -29,9 +29,10 @@ type PhysicsHeroProps = {
 
 const DEFAULT_TAGS: Tag[] = [
 	{ label: 'Vue 3', accent: true },
+	{ label: 'React', accent: true },
 	{ label: 'Nuxt' },
+	{ label: 'Next.js' },
 	{ label: 'TypeScript' },
-	{ label: 'React' },
 	{ label: 'Figma' },
 ];
 
@@ -383,7 +384,7 @@ export default function PhysicsHero({
 						</Text>
 						<div className='mt-[clamp(18px,2.4vw,28px)] flex flex-wrap items-center gap-2.5'>
 							<Badge variant='pulse'>Открыт к работе</Badge>
-							<Badge>Vue 3 · Nuxt · TypeScript</Badge>
+							<Badge>Vue · React · TypeScript</Badge>
 							<Badge>Минск / удалённо</Badge>
 						</div>
 					</div>
@@ -391,7 +392,7 @@ export default function PhysicsHero({
 					<div className='hidden max-w-[340px] flex-col gap-4 text-right lg:flex'>
 						<Text variant='caps' color='night-ink'>
 							Привет, я Максим Бекиш — фронтенд-разработчик из Минска. Собираю
-							интерфейсы на Vue, Nuxt и TypeScript от макета до продакшена.
+							интерфейсы на Vue, React и TypeScript от макета до продакшена.
 						</Text>
 						<Button
 							className='ml-auto'
@@ -414,12 +415,17 @@ export default function PhysicsHero({
 				</Text>
 
 				<div className='mt-auto border-t border-night-ink/25'>
-					<div ref={barRef}  className='wrapper-xl flex items-center justify-between gap-3 py-3'>
+					<div
+						ref={barRef}
+						className='wrapper-xl flex items-center justify-between gap-3 py-3'>
 						<Button
 							variant='ghost'
 							className='[&_svg]:size-4 flex-1 md:flex-none '
 							onClick={() => resetRef.current()}>
-							<RotateCcw className='text-accent hidden sm:inline-flex' strokeWidth={1.5} />
+							<RotateCcw
+								className='text-accent hidden sm:inline-flex'
+								strokeWidth={1.5}
+							/>
 							Собрать заново
 						</Button>
 						<Button
