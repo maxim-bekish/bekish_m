@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Unbounded, Onest } from 'next/font/google';
 import Scrollbar from '@/components/ui/Scrollbar';
 import AccentInitScript from '@/components/ui/AccentInitScript';
+import YandexMetrika from '@/components/ui/YandexMetrika';
 import './globals.css';
 
 const unbounded = Unbounded({
@@ -15,6 +16,9 @@ const onest = Onest({
 	weight: ['400', '500'],
 	variable: '--font-onest',
 });
+
+// номер счётчика Метрики; в dev не считаем, чтобы не засорять статистику
+const ymId = process.env.NODE_ENV === 'production' ? Number(process.env.YANDEX_METRIKA_ID) : 0;
 
 export const metadata: Metadata = {
 	title: 'Максим Бекиш — фронтенд-разработчик',
@@ -41,6 +45,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
 					{children}
 					<Scrollbar />
 				</div>
+				{ymId > 0 && <YandexMetrika id={ymId} />}
 			</body>
 		</html>
 	);
