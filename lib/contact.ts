@@ -33,6 +33,41 @@ function tooMany(ip: string) {
 	return process.env.NODE_ENV !== 'development' && recentHits(ip).length >= LIMIT;
 }
 
+// флаг из двухбуквенного кода страны: RU → 🇷🇺
+const flag = (code: string) =>
+	String.fromCodePoint(...[...code.toUpperCase()].map((c) => 0x1f1a5 + c.charCodeAt(0)));
+
+const place = (code: string, country: string, city?: string | null) =>
+	`${flag(code)} ${country}${city ? `, ${city}` : ''}`;
+
+// локальные и частные адреса геолокацией не определить
+const PRIVATE_IP = /^(unknown$|::1$|127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|::ffff:127\.)/;
+
+// откуда пришло сообщение. Сначала заголовки хостинга (Vercel, Cloudflare) — бесплатно и мгновенно,
+// иначе спрашиваем ipwho.is. Ошибка или локальный IP — пишем «не определено», отправку не ломаем
+async function locate(h: Headers, ip: string): Promise<string | null> {
+	const code = h.get('x-vercel-ip-country') ?? h.get('cf-ipcountry');
+	if (code && /^[A-Z]{2}$/.test(code)) {
+		const country = new Intl.DisplayNames(['ru'], { type: 'region' }).of(code) ?? code;
+		const city = h.get('x-vercel-ip-city');
+		return place(code, country, city && decodeURIComponent(city));
+	}
+
+	if (PRIVATE_IP.test(ip)) return null;
+	try {
+		const res = await fetch(
+			`https://ipwho.is/${encodeURIComponent(ip)}?lang=ru&fields=success,country,country_code,city`,
+			{ signal: AbortSignal.timeout(2000) },
+		);
+		const geo: { success: boolean; country?: string; country_code?: string; city?: string } =
+			await res.json();
+		if (!geo.success || !geo.country || !geo.country_code) return null;
+		return place(geo.country_code, geo.country, geo.city);
+	} catch {
+		return null;
+	}
+}
+
 export async function sendContact(input: ContactInput): Promise<ContactResult> {
 	const parsed = schema.safeParse(input);
 	if (!parsed.success) {
@@ -41,7 +76,8 @@ export async function sendContact(input: ContactInput): Promise<ContactResult> {
 		return { ok: false, error: parsed.error.issues[0].message };
 	}
 
-	const ip = (await headers()).get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown';
+	const h = await headers();
+	const ip = h.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown';
 	if (tooMany(ip)) return { ok: false, error: 'Слишком много сообщений, попробуйте позже' };
 
 	const token = process.env.TELEGRAM_BOT_TOKEN;
@@ -52,6 +88,7 @@ export async function sendContact(input: ContactInput): Promise<ContactResult> {
 	}
 
 	const { message, contact } = parsed.data;
+	const from = await locate(h, ip);
 	try {
 		const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
 			method: 'POST',
@@ -59,7 +96,7 @@ export async function sendContact(input: ContactInput): Promise<ContactResult> {
 			// без parse_mode: текст посетителя уходит как есть, экранировать разметку не нужно
 			body: JSON.stringify({
 				chat_id: chatId,
-				text: `✉️ Сообщение с сайта\n\n${message}\n\nКонтакт: ${contact}`,
+				text: `✉️ Сообщение с сайта\n\n${message}\n\nКонтакт: ${contact}\n\nОткуда: ${from ?? 'не определено'}`,
 			}),
 			signal: AbortSignal.timeout(8000),
 		});
