@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { Paperclip } from 'lucide-react';
 import { ReactNode, ViewTransition } from 'react';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 // только slug из списка работ, остальные — 404
 export const dynamicParams = false;
 
@@ -167,7 +168,7 @@ export default async function Work({ params }: PageProps<'/work/[slug]'>) {
 						})}
 					</ul>
 				</CaseSection>
-				<div className='grid gap-[clamp(16px,2vw,28px)]   md:grid-cols-2'>
+				<div className='grid gap-[clamp(16px,2vw,28px)] md:grid-cols-2'>
 					{work.images.map((item, i) => {
 						return (
 							<figure key={i} className=''>
@@ -191,6 +192,14 @@ export default async function Work({ params }: PageProps<'/work/[slug]'>) {
 						);
 					})}
 				</div>
+				<Link href='/#cases' className='flex w-fit ml-auto gap-2 group md:mt-20 mt-10 '>
+					<Text variant='section' className='group-hover:text-accent'>
+						Назад
+					</Text>
+					<Text variant='section' color='accent'>
+						.
+					</Text>
+				</Link>
 			</section>
 		</ViewTransition>
 	);
