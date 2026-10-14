@@ -1,5 +1,7 @@
+import type { Metadata } from 'next';
 import { Text } from '@/components/ui/Text';
 import { works } from '@/lib/works';
+import { SITE_NAME, SITE_TITLE } from '@/lib/site';
 import { notFound } from 'next/navigation';
 import mentorAiPreview from '@/assets/works/mentor-ai/preview.avif';
 import Image from 'next/image';
@@ -11,6 +13,30 @@ export const dynamicParams = false;
 
 export function generateStaticParams() {
 	return works.map((work) => ({ slug: work.id }));
+}
+
+export async function generateMetadata({ params }: PageProps<'/work/[slug]'>): Promise<Metadata> {
+	const { slug } = await params;
+	const work = works.find((w) => w.id === slug);
+	if (!work) return {};
+
+	const title = `Кейс ${work.title}`;
+	const description = work.description.replace(/\s*\n\s*/g, ' ');
+	return {
+		title,
+		description,
+		alternates: { canonical: `/work/${work.id}` },
+		// openGraph страницы заменяет родительский целиком — общую картинку превью указываем заново
+		openGraph: {
+			type: 'article',
+			locale: 'ru_RU',
+			siteName: SITE_NAME,
+			title,
+			description,
+			url: `/work/${work.id}`,
+			images: { url: '/opengraph-image', width: 1200, height: 630, alt: SITE_TITLE },
+		},
+	};
 }
 
 function CaseSection({ title, children }: { title: string; children: ReactNode }) {

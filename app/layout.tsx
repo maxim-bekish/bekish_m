@@ -3,6 +3,7 @@ import { Unbounded, Onest } from 'next/font/google';
 import Scrollbar from '@/components/ui/Scrollbar';
 import AccentInitScript from '@/components/ui/AccentInitScript';
 import YandexMetrika from '@/components/ui/YandexMetrika';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/site';
 import './globals.css';
 
 const unbounded = Unbounded({
@@ -21,7 +22,25 @@ const onest = Onest({
 const ymId = process.env.NODE_ENV === 'production' ? Number(process.env.YANDEX_METRIKA_ID) : 0;
 
 export const metadata: Metadata = {
-	title: 'Максим Бекиш — фронтенд-разработчик',
+	metadataBase: new URL(SITE_URL),
+	title: { default: SITE_TITLE, template: `%s — ${SITE_NAME}` },
+	description: SITE_DESCRIPTION,
+	authors: [{ name: SITE_NAME, url: SITE_URL }],
+	alternates: { canonical: '/' },
+	openGraph: {
+		type: 'website',
+		locale: 'ru_RU',
+		siteName: SITE_NAME,
+		title: SITE_TITLE,
+		description: SITE_DESCRIPTION,
+		url: '/',
+	},
+	twitter: { card: 'summary_large_image' },
+	// коды подтверждения из Яндекс Вебмастера и Google Search Console
+	verification: {
+		yandex: process.env.YANDEX_VERIFICATION,
+		google: process.env.GOOGLE_VERIFICATION,
+	},
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
