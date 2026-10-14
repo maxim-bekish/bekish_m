@@ -95,7 +95,7 @@ export default async function Work({ params }: PageProps<'/work/[slug]'>) {
 								className='ml-3 rounded-md bg-night-bg px-3 py-1 hover:text-accent'
 								variant='caps'
 								color='muted'>
-								{work.link.slice(8, work.link.length)}
+								{new URL(work.link).hostname}
 							</Text>
 						</div>
 						<Image
@@ -141,7 +141,7 @@ export default async function Work({ params }: PageProps<'/work/[slug]'>) {
 								/>
 							</Text>
 							<Text as='dd' variant='body' className='mb-1.5   '>
-								{work.link}
+								Перейти на сайт
 							</Text>
 						</a>
 					</dl>
